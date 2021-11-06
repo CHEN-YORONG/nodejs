@@ -20,6 +20,13 @@ class Order {
         const [rs] = await db.query(sql, [member_id]);
         return rs;
     }
+     /* 讀取單筆資料 */
+     static async findOne(member_sid=0){
+        const sql = `SELECT * FROM ${tableName} WHERE member_sid=? order by sid DESC`;
+        const [rs] = await db.query(sql, [member_sid]);
+
+        return rs;
+    }
 
     /* 透過商品 id 找項目 */
     static async findItem(member_id=0, product_id=0){
@@ -31,7 +38,7 @@ class Order {
         return null;
     }
 
-    static async add(member_sid, name, mobile, orderprice, delivery, receiver, delivery_address, card){
+    static async add(member_sid,order_sid, name, mobile, orderprice, delivery, receiver, delivery_address, card){
         const output = {
             success: false,
             error: ''
@@ -45,7 +52,7 @@ class Order {
         // }
 
         const obj = {
-            member_sid, name, mobile, orderprice, delivery, receiver, delivery_address, card,
+            member_sid,order_sid, name, mobile, orderprice, delivery, receiver, delivery_address, card,
         };
         const sql = `INSERT INTO ${tableName} SET ?`;
         const [r] = await db.query(sql, [obj]);

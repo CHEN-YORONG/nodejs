@@ -5,14 +5,14 @@ const {getListData} = require("./address-book");
 
 const router = express.Router();
 
-router.use((req, res, next)=>{
-    // 判斷有沒有通過 jwt 驗證 (寫在 index.js 主程式)
-    if(req.myAuth && req.myAuth.id){
-        next();
-    } else {
-        res.json({success: false, error:'沒有 token 或者 token 不合法'});
-    }
-});
+// router.use((req, res, next)=>{
+//     // 判斷有沒有通過 jwt 驗證 (寫在 index.js 主程式)
+//     if(req.myAuth && req.myAuth.id){
+//         next();
+//     } else {
+//         res.json({success: false, error:'沒有 token 或者 token 不合法'});
+//     }
+// });
 
 // 讀取購物車清單
 router.get('/', async (req, res) => {
@@ -36,9 +36,17 @@ router.get('/:id',async (req, res) => {
 
 // 新增項目
 router.post('/', async (req, res) => {
-    // req.body.product_id
-    // req.body.quantity
-    res.json( await Order_Detail.add(req.body.order_sid,req.body.product_id,req.body.productname,req.body.size,req.body.price,req.body.quantity));
+    console.log('req:::::::::::::::',req.body);
+    var a = await req.body.orderDetail.forEach(element => {
+        // element.id
+        
+        Order_Detail.add(req.body.order_id,element.id,element.amount);
+        console.log('element',element);
+    });
+    res.json(a)
+    // res.json( await Order_Detail.add(req.body.order_sid,req.body.product_id,req.body.price,req.body.quantity
+        // req.body.productname,req.body.size,
+        // ));
     //  order_sid, product_id, productname, size, price, quantity
 });
 

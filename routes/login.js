@@ -105,15 +105,27 @@ router.post('/login-jwt', async (req, res)=>{
 
     const success = await bcrypt.compare(req.body.password, rs[0].password);
     if(success){
-        const {id, email, nickname} = rs[0];
+        const {id, email, nickname,mobile} = rs[0];
         // req.session.member = {id, email, nickname};
 
         output.success = true;
-        output.member = {id, email, nickname};
-        output.token = await jwt.sign({id, email, nickname}, process.env.JWT_SECRET);
+        output.member = {id, email, nickname,mobile};
+        output.token = await jwt.sign({id, email, nickname,mobile}, process.env.JWT_SECRET);
     }
     res.json(output);
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/get-data-jwt',async (req, res)=>{
     const output = {

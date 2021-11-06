@@ -44,7 +44,9 @@ class Order_Detail {
         return JSON.stringify(this.data, null, 4);
     }
 
-    static async add( order_sid, product_id, productname, size, price, quantity){
+    static async add( order_sid,product_id,quantity
+        //  productname, size, price,order_sid,
+          ){
         const output = {
             success: false,
             error: ''
@@ -56,7 +58,9 @@ class Order_Detail {
         // }
 
         const obj = {
-            order_sid, product_id, productname, size, price, quantity
+            order_sid,product_id, quantity
+            // productname, size,  order_sid, 
+            
         };
         const sql = `INSERT INTO ${tableName} SET ?`;
         const [r] = await db.query(sql, [obj]);
