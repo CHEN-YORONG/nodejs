@@ -1,4 +1,3 @@
-
 const {f1, f3: f4 } = require('./arrow-func');
 const f2 = require(__dirname + '/arrow-func');
 

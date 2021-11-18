@@ -33,11 +33,11 @@
     const imgs = document.querySelector('#imgs');
     const imgData = [];
 
-    const renderImages = ()=>{
+    const renderImages = ()=>{  // 先看下面的事件處理器比較好理解
         imgs.innerHTML = '';
 
         imgData.forEach(el=>{
-            const i = new Image();
+            const i = new Image();  // Image()是類別的意思
             i.width = 300;
             i.src = '/img/' + el;
             imgs.append(i);

@@ -1,6 +1,6 @@
 const db = require('./../modules/connect-mysql');
 
-const tableName = 'odrer';
+const tableName = 'trunk_order';
 const pkField = 'sid';
 
 
@@ -13,10 +13,10 @@ class Order {
 
     /* 讀取所有資料, 要有篩選的功能 */
     static async getList(member_id){
-        const sql = `SELECT c.*, p.bookname, p.price  FROM carts c
-                        JOIN products p 
-                        ON p.sid=c.product_id
-                    WHERE member_id=? ORDER BY created_at`;
+        const sql = `SELECT o.*, od.product_id, od.quantity ,t.* FROM trunk_order o
+        JOIN trunk_detail od 
+        ON o.order_sid=od.order_sid JOIN trunk t ON t.sid=od.product_id
+        WHERE member_sid=? order by o.sid DESC`;
         const [rs] = await db.query(sql, [member_id]);
         return rs;
     }

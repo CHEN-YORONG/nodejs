@@ -54,52 +54,6 @@ SELECT p.sid, p.`bookname`, c.`name` `cate_name` FROM `products` p JOIN `categor
 CREATE VIEW `VIEW_PRODUCT_CATE` AS
 SELECT p.sid, p.`bookname`, c.`name` `cate_name` FROM `products` p JOIN `categories` c ON p.`category_sid`=c.sid;
 
-----------------------
-購物車:
-    session
-    db
-    * localStorage
-----------------------
-加入的商品:
-    全部的資料 (不好的作法)
-    商品ID (比較好的作法)
-----------------------
-購物車功能: CRUD
-    加入商品
-    讀取購物車清單
-    變更數量
-    移除商品 (清空)
-
-DB table:
-    id (PK)
-    store_id (商店ID, 沒有要實作,多台購物車)
-    member_id (FK)
-    product_id (FK)
-    quantity
-    created_at
--- --------------------
-CREATE TABLE `carts` (
-  `sid` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-ALTER TABLE `carts`
-  ADD PRIMARY KEY (`sid`),
-  ADD KEY `member_id` (`member_id`),
-  ADD KEY `product_id` (`product_id`);
-
-ALTER TABLE `carts`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
--- --------------------
-
-
-
-
-
-
 
 
 

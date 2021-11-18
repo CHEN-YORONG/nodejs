@@ -48,7 +48,7 @@
         // TODO: 檢查格式是否符合 email 格式
 
         const usp = new URLSearchParams();
-        usp.set('email', email.value.toLowerCase().trim());
+        usp.set('email', email.value);
 
         fetch('/account-check?' + usp).then(r=>r.json()).then(data=>{
             if(data.used){

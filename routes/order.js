@@ -18,7 +18,20 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     res.json({info: 'ok'});
 });
-// 讀取單筆
+
+// 讀取歷史order
+router.get('/getlist/:id',async (req, res) => {
+    const output = {
+        success: false,
+        data: null,
+    };
+    output.data = await Order.getList(req.params.id);
+    if(output.data){
+        output.success = true;
+    }
+    res.json(output);
+} );
+// 讀取單筆order
 router.get('/:id',async (req, res) => {
     const output = {
         success: false,

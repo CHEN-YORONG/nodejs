@@ -10,4 +10,3 @@ db.query("SELECT * FROM address_book LIMIT 3,2")
     .catch(ex=>{
         console.log(ex);
     })
-

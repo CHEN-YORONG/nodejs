@@ -13,4 +13,3 @@ POST http://localhost:3001/try-post
 Content-Type: application/json
 
 {"name":"flora", "gender":"female"}
-

@@ -21,26 +21,6 @@ function App() {
   const mySubmit = async (e)=>{
     e.preventDefault();
 
-    // urlencoded, json, formData
-
-    // 1. json
-    /*
-    const dataObj = {
-      avatar: document.fake_form.avatar.value,
-      name: document.fake_form.name.value,
-    };
-    const r = await fetch(TEST_AVATAR, {
-      method: 'POST',
-      body: JSON.stringify(dataObj),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await r.json();
-    console.log(data)
-*/
-
-
     // 2. urlencoded
     const usp = new URLSearchParams(new FormData(document.fake_form));
     // console.log(usp.toString());

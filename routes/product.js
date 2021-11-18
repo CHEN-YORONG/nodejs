@@ -10,6 +10,26 @@ router.get('/', async (req, res) => {
     res.json(await Product.findAll(req.query));
 });
 
+// Product頁列表
+router.get('/findnine', async (req, res) => {
+    res.json(await Product.findnine(req.query));
+});
+
+// 推薦圖片列表
+router.get('/findsix', async (req, res) => {
+    res.json(await Product.findsix(req.query));
+});
+
+//為啥不行的列表
+router.get('/getlistdata', async (req, res) => {
+    res.json(await Product.getListData(req.query));  
+});
+
+// 讀取sid>32區間
+router.get('/findsome',async (req, res) => {
+    res.json(await Product.findSome());
+} );
+
 // 讀取單筆
 router.get('/:id',async (req, res) => {
     const output = {
@@ -22,10 +42,12 @@ router.get('/:id',async (req, res) => {
     }
     res.json(output);
 } );
+
 // 測試用
 router.get('/test01/2',async (req, res) => {
 
     const p1 = await Product.findOne(2);
+    // console.log(p1)
     p1.data.price *= 2;
 
     res.json(await p1.save());
@@ -47,7 +69,9 @@ router.put('/:id', async (req, res) => {
     const p1 = await Product.findOne(req.params.id);
     if(p1){
         output.success = true;
+        // console.log(req.body.bookname)
         output.result = await p1.edit(req.body);
+        // console.log(output.result)
     }
     res.json(output);
 });

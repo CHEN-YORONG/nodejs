@@ -15,8 +15,3 @@ fs.writeFile(
         }
         console.log('寫入成功');
     });
-
-
-
-
-

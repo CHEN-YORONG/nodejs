@@ -1,6 +1,6 @@
 const db = require('./../modules/connect-mysql');
 
-const tableName = 'order_detail';
+const tableName = 'trunk_detail';
 const pkField = 'sid';
 
 
@@ -51,12 +51,7 @@ class Order_Detail {
             success: false,
             error: ''
         }
-        // 不要重複輸入資料
-        // if(await Cart.findItem(member_id, product_id)){
-        //     output.error = "資料重複了";
-        //     return output;
-        // }
-
+        
         const obj = {
             order_sid,product_id, quantity
             // productname, size,  order_sid, 
@@ -103,5 +98,3 @@ class Order_Detail {
 }
 
 module.exports = Order_Detail;
-
-

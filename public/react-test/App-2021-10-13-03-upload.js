@@ -24,7 +24,7 @@ function App() {
 
       <div className="mb-3">
         <label htmlFor="my_img" className="form-label">image</label>
-        <input type="text" className="form-control" id="my_img" name="my_img" value={imgSrc}/>
+        <input type="text" className="form-control" id="my_img" name="my_img" value={imgSrc} readOnly/>
       </div>
 
       <button type="submit" className="btn btn-primary">Submit</button>
